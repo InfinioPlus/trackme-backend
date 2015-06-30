@@ -32,7 +32,7 @@
         $id_ = $array["guid"];
         $lat_ = $_GET["lat"];
         $long_= $_GET["long"];
-        $query = "INSERT INTO trackme (id,latitudes,longitudes,last_update) VALUES ('$id_',$lat_,$long_, NOW())";
+        $query = "INSERT INTO users (id,latitudes,longitudes,last_update) VALUES ('$id_',$lat_,$long_, NOW())";
         if (mysqli_query($conn, $query)) 
         {
             // 1 means successfully conected and the user can continue
