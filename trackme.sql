@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2015 at 10:13 AM
+-- Generation Time: Jun 30, 2015 at 04:35 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -30,8 +30,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` varchar(100) NOT NULL,
   `latitudes` float NOT NULL,
   `longitudes` float NOT NULL,
-  `last_update` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `last_update` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
