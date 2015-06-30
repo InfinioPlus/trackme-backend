@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2015 at 04:16 PM
+-- Generation Time: Jun 30, 2015 at 10:13 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL,
+  `id` varchar(100) NOT NULL,
   `phone_id` int(11) NOT NULL,
   `latitudes` float NOT NULL,
   `longitudes` float NOT NULL,
