@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` varchar(100) NOT NULL,
-  `phone_id` int(11) NOT NULL,
   `latitudes` float NOT NULL,
   `longitudes` float NOT NULL,
   `last_update` datetime NOT NULL,
