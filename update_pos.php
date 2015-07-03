@@ -39,9 +39,22 @@
         
         $arr = array();
         
-        // Getting alg the informtion of users in the same channel
+        // Getting all the informtion of users in the same channel
         $query3 = "SELECT * FROM users WHERE channel = '$channel'";
         
+		if($query_run = mysqli_query($conn,$query3))
+		{
+			while($query_row = mysqli_fetch_assoc($query_run))
+			{
+				$arry = array();
+				$arry['id'] = $query_row['id'];
+				$arry['channel'] = $query_row['channel'];
+				$arry['longitudes'] = $query_row['longitudes'];
+				$arry['latitudes'] = $query_row['latitudes'];
+				$arry['last_update'] = $query_row['last_update'];
+				array_push($arr,$arry);
+			}
+		}
         
         // Output data depending if it is cross domain call or normal call
         if (isset($_GET["callback"])){
