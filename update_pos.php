@@ -15,24 +15,41 @@
     // Check connection
 
     if ($conn) {
+        
+        // Get data
+        $phone_id = $_GET["guid"];
+        $lat_ = $_GET["lat"];
+        $long_= $_GET["lng"];
+        
+        // Update user data 
+        $query1 = "UPDATE users SET latitudes = $lat_, longitudes = $long_, last_update = NOW() WHERE id = '$phone_id'";
+        mysqli_query($conn, $query1) OR die($conn_error);
+        
+        // Get user channel
+        $channel = '';
+        $query2 = "SELECT channel FROM users WHERE id = '$phone_id'";
+        if($query_run = mysqli_query($conn,$query2))
+        {
+            // Getting just the first result, no more
+            if($query_row = mysqli_fetch_assoc($query_run))
+            {
+                $channel = $query_row['channel'];				
+            }				
+        }
+        
+        $arr = array();
+        
+        // Getting alg the informtion of users in the same channel
+        $query3 = "SELECT * FROM users WHERE channel = '$channel'";
+        
+        
+        // Output data depending if it is cross domain call or normal call
+        if (isset($_GET["callback"])){
+            echo $_GET["callback"] . '(' . json_encode($arr) . ')';
+        }	 
+        else{
+            echo json_encode($arr);
+        }
+    }
     
-    $phone_id = $_GET["guid"];
-    $lat_ = $_GET["lat"];
-    $long_= $_GET["lng"];
-    $query1 = "UPDATE users SET latitudes = $lat_, longitudes = $long_, last_update = NOW() WHERE id = '$phone_id'";
-    mysqli_query($conn, $query1) OR die($conn_error);
-    $query2 = "SELECT channel FROM users WHERE id = '$phone_id'";
-    $arr = array();
-    if($query_run = mysqli_query($conn,$query2))
-    {
-	while($query_row = mysqli_fetch_assoc($query_run))
-	{
-		$arr['channel'] = $query_row['channel'];				
-	}				
-    }
-    echo json_encode($arr);
-    }
-	
-
-
 ?>
