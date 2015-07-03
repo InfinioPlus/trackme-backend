@@ -47,7 +47,6 @@
 		while($query_row = mysqli_fetch_assoc($query_run))
 		{
 			$arry = array();
-			$arry['id'] = $query_row['id'];
 			$arry['channel'] = $query_row['channel'];
 			$arry['longitudes'] = $query_row['longitudes'];
 			$arry['latitudes'] = $query_row['latitudes'];
