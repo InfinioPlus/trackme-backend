@@ -1,20 +1,18 @@
 <?php
 
-
     // Connect to database
-
     $host = 'localhost';
     $user = 'root';
     $pass = '';
     $conn_error = 'Could Not Connect';
     $dbname = "trackme";
-    // Create connection
-
+   
+   // Create connection
     $conn = mysqli_connect($host, $user, $pass, $dbname);
 
+    
     // Check connection
-
-    if ($conn) {
+    if ($conn){
         
         // Get data
         $phone_id = $_GET["guid"];
@@ -28,11 +26,9 @@
         // Get user channel
         $channel = '';
         $query2 = "SELECT channel FROM users WHERE id = '$phone_id'";
-        if($query_run = mysqli_query($conn,$query2))
-        {
+        if($query_run = mysqli_query($conn,$query2)){
             // Getting just the first result, no more
-            if($query_row = mysqli_fetch_assoc($query_run))
-            {
+            if($query_row = mysqli_fetch_assoc($query_run)){
                 $channel = $query_row['channel'];				
             }				
         }
@@ -42,18 +38,16 @@
         // Getting all the informtion of users in the same channel
         $query3 = "SELECT * FROM users WHERE channel = '$channel'";
         
-	if($query_run = mysqli_query($conn,$query3))
-	{
-		while($query_row = mysqli_fetch_assoc($query_run))
-		{
-			$arry = array();
-			$arry['channel'] = $query_row['channel'];
-			$arry['longitudes'] = $query_row['longitudes'];
-			$arry['latitudes'] = $query_row['latitudes'];
-			$arry['last_update'] = $query_row['last_update'];
-			array_push($arr,$arry);
-		}
-	}
+        if($query_run = mysqli_query($conn,$query3)){
+            while($query_row = mysqli_fetch_assoc($query_run)){
+                $arry = array();
+                $arry['channel'] = $query_row['channel'];
+                $arry['longitudes'] = $query_row['longitudes'];
+                $arry['latitudes'] = $query_row['latitudes'];
+                $arry['last_update'] = $query_row['last_update'];
+                array_push($arr,$arry);
+            }
+        }
         
         // Output data depending if it is cross domain call or normal call
         if (isset($_GET["callback"])){
