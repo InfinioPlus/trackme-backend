@@ -30,10 +30,11 @@
         //On connection
 
         $id_ = $array["guid"];
+        $user_name = $_GET["user"];
         $lat_ = $_GET["lat"];
         $long_= $_GET["lng"];
         $channel_ = $_GET["channel"];
-        $query = "INSERT INTO users (id,channel,latitudes,longitudes,last_update) VALUES ('$id_' , '$channel_' , $lat_ , $long_ , NOW())";
+        $query = "INSERT INTO users (id,username,channel,latitudes,longitudes,last_update) VALUES ('$id_' , '$user_name' , $channel_' , $lat_ , $long_ , NOW())";
         if (mysqli_query($conn, $query)) 
         {
             // 1 means successfully conected and the user can continue

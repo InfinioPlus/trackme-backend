@@ -41,6 +41,7 @@
         if($query_run = mysqli_query($conn,$query3)){
             while($query_row = mysqli_fetch_assoc($query_run)){
                 $arry = array();
+                $arry['username'] = $query_row['username'];
                 $arry['longitudes'] = $query_row['longitudes'];
                 $arry['latitudes'] = $query_row['latitudes'];
                 $arry['last_update'] = $query_row['last_update'];
