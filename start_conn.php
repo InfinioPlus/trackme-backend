@@ -34,7 +34,7 @@
         $lat_ = $_GET["lat"];
         $long_= $_GET["lng"];
         $channel_ = $_GET["channel"];
-        $query = "INSERT INTO users (id,username,channel,latitudes,longitudes,last_update) VALUES ('$id_' , '$user_name' , $channel_' , $lat_ , $long_ , NOW())";
+        $query = "INSERT INTO users (id,username,channel,latitudes,longitudes,last_update) VALUES ('$id_' , '$user_name' , '$channel_' , $lat_ , $long_ , NOW())";
         if (mysqli_query($conn, $query)) 
         {
             // 1 means successfully conected and the user can continue
@@ -46,10 +46,10 @@
             $array['connection_status'] = '2';
         }
         mysqli_close($conn);
-    } else{
-        //something unexpected happen
-        $array['connection_status'] = '2';
-    }
+    	} else{
+        	//something unexpected happen
+        	$array['connection_status'] = '2';
+    	}
     
    
     // output the results
