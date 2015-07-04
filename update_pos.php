@@ -36,7 +36,7 @@
         $arr = array();
         
         // Getting all the informtion of users in the same channel
-        $query3 = "SELECT * FROM users WHERE channel = '$channel'";
+        $query3 = "SELECT * FROM users WHERE channel = '$channel' AND id NOT IN ('$phone_id')";
         
         if($query_run = mysqli_query($conn,$query3)){
             while($query_row = mysqli_fetch_assoc($query_run)){
