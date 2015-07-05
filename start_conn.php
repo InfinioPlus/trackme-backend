@@ -30,10 +30,10 @@
         //On connection
 
         $id_ = $array["guid"];
-        $user_name = $_GET["user"];
-        $lat_ = $_GET["lat"];
-        $long_= $_GET["lng"];
-        $channel_ = $_GET["channel"];
+        $user_name = mysqli_real_escape_string($conn,$_GET["user"]);
+        $lat_ = mysqli_real_escape_string($conn,$_GET["lat"]);
+        $long_= mysqli_real_escape_string($conn,$_GET["lng"]);
+        $channel_ = mysqli_real_escape_string($conn,$_GET["channel"]);
         $query = "INSERT INTO users (id,username,channel,latitudes,longitudes,last_update) VALUES ('$id_' , '$user_name' , '$channel_' , $lat_ , $long_ , NOW())";
         if (mysqli_query($conn, $query)) 
         {
